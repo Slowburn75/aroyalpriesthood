@@ -1,20 +1,25 @@
 import type { Metadata, Viewport } from "next";
+import { Cinzel, Cormorant_Garamond, Inter, Montserrat, Playfair_Display } from "next/font/google";
+import { SITE } from "@/lib/config";
+import { ClientShell } from "@/components/ClientShell";
 import "./globals.css";
 
-const siteTitle = "AROYALPRIESTHOOD | A Royal Priesthood";
-const siteDescription =
-  "A premium Christian baby announcement celebrating the arrival of a beloved prince, wrapped in testimony, prophecy, and royal gratitude.";
+const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel" });
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
+const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-cormorant" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aroyalpriesthood.com"),
-  title: siteTitle,
-  description: siteDescription,
-  applicationName: "AROYALPRIESTHOOD",
+  metadataBase: new URL(SITE.url),
+  title: SITE.title,
+  description: SITE.description,
+  applicationName: SITE.name,
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: "https://aroyalpriesthood.com",
-    siteName: "AROYALPRIESTHOOD",
+    title: SITE.title,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     images: [
       {
         url: "/royal-priesthood-preview.png",
@@ -28,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescription,
+    title: SITE.title,
+    description: SITE.description,
     images: ["/royal-priesthood-preview.png"]
   },
   icons: {
@@ -50,8 +55,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" data-scroll-behavior="smooth" className={`${cinzel.variable} ${montserrat.variable} ${cormorant.variable} ${playfair.variable} ${inter.variable}`}>
+      <body>
+        <ClientShell>{children}</ClientShell>
+      </body>
     </html>
   );
 }
