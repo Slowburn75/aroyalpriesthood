@@ -37,11 +37,16 @@ function useSuggestions() {
     });
   }, []);
 
-  return { suggestions, addSuggestion };
+  const clearSuggestions = useCallback(() => {
+    setSuggestions([]);
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+  }, []);
+
+  return { suggestions, addSuggestion, clearSuggestions };
 }
 
 export default function NamePage() {
-  const { suggestions, addSuggestion } = useSuggestions();
+  const { suggestions, addSuggestion, clearSuggestions } = useSuggestions();
   const [nameInput, setNameInput] = useState("");
   const [whoInput, setWhoInput] = useState("");
 
@@ -169,6 +174,15 @@ export default function NamePage() {
                   </span>
                 </motion.div>
               ))}
+              <motion.button
+                className="suggest-clear"
+                onClick={clearSuggestions}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Clear all suggestions"
+              >
+                Clear all
+              </motion.button>
             </motion.div>
           )}
         </AnimatePresence>
