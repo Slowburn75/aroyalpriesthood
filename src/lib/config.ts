@@ -6,13 +6,19 @@ export const SITE = {
   name: "AROYALPRIESTHOOD"
 } as const;
 
+export const COUPLE = {
+  wife: "Ronke",
+  husband: "Etim",
+  surname: "The Power Family"
+} as const;
+
 export const CONTACT = {
   email: "hello@aroyalpriesthood.com"
 } as const;
 
 export const BABY = {
-  name: "Prince Zion Nathaniel",
-  nickName: "Prince Zion"
+  name: "?",
+  nickName: "?"
 } as const;
 
 export const NAV_ITEMS = [
@@ -50,46 +56,58 @@ export const MILESTONES = [
   }
 ] as const;
 
-export const NAME_MEANINGS = [
-  {
-    name: "Zion",
-    meaning: "The Dwelling Place of God",
-    scripture: "Psalm 132:13 — 'For the Lord has chosen Zion; He has desired it for His dwelling place.'",
-    description:
-      "Zion speaks of belonging, of being set apart for God's glory. A mountain that cannot be moved, a people established by His hand."
-  },
-  {
-    name: "Nathaniel",
-    meaning: "Gift of God",
-    scripture: "John 1:47 — 'Behold, an Israelite indeed, in whom there is no deceit!'",
-    description:
-      "Nathaniel means gift of God — a testimony that this son is received with reverence, joy, and prophetic gratitude."
-  }
-] as const;
-
 export const SCRIPTURE = {
   hero: "1 Peter 2:9 — 'But you are a chosen generation, a royal priesthood, a holy nation, His own special people...'",
   name: "Psalm 127:3 — 'Behold, children are a heritage from the Lord, the fruit of the womb is a reward.'"
 } as const;
 
+export const TREASURY_MESSAGE = {
+  gratitude:
+    "We give thanks to God for His faithfulness, goodness, and abundant grace over our family. As we celebrate this precious gift of life, our hearts are filled with gratitude for the love, prayers, encouragement, and support we have received from family and friends.",
+  kindness:
+    "Every act of kindness, every thoughtful gift, every prayer lifted on our behalf, and every expression of love has been a blessing to us. We are truly grateful for the generosity that has surrounded our family during this special season.",
+  invite:
+    "Should you feel led to bless our family further, you may do so using any of the account details below.",
+  closing:
+    "Thank you for sharing in our joy and for being part of this beautiful journey with us. Your love, care, and support mean more than words can express.",
+  blessing:
+    "May the Lord richly bless you, strengthen you, and cause His favour to shine upon you. May He reward your kindness, fill your home with peace, joy, and abundance, and grant you every good thing according to His perfect will.",
+  signature: "With Love and Gratitude,\nRonke and Etim (The Power Family)"
+} as const;
+
+export const BANK_ACCOUNTS = [
+  {
+    currency: "UK POUNDS (£)",
+    name: "Aderonke Oladigbolu",
+    bank: "Monzo Bank",
+    accountNumber: "37844467",
+    sortCode: "04-00-03",
+    iban: "GB12MONZ04000337844467",
+    bic: "MONZGB2L"
+  },
+  {
+    currency: "NAIRA (₦)",
+    name: "ADERONKE TEMITOPE OLADIGBOLU",
+    bank: "FIDELITY BANK",
+    accountNumber: "6560314808"
+  }
+] as const;
+
 export const GIFTS = [
   {
     title: "Little Prince Essentials",
     description: "Thoughtful diapers, care items, blankets, and everyday treasures for his first royal season.",
-    action: "Send Essentials",
-    icon: "baby"
+    action: "Send Essentials"
   },
   {
     title: "Royal Wardrobe",
     description: "Soft outfits, heirloom pieces, and elegant babywear for pictures, dedication, and cozy days.",
-    action: "Bless His Closet",
-    icon: "gift"
+    action: "Bless His Closet"
   },
   {
     title: "Seed of Blessing",
     description: "A love offering toward his care, future, and the beautiful new rhythms of family life.",
-    action: "Give a Seed",
-    icon: "heart"
+    action: "Give a Seed"
   }
 ] as const;
 

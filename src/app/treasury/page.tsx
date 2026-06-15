@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Baby, Gift, HeartHandshake, Mail } from "lucide-react";
+import { Baby, Gift, HeartHandshake, Mail, Landmark } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { CONTACT, GIFTS } from "@/lib/config";
+import { CONTACT, GIFTS, TREASURY_MESSAGE, BANK_ACCOUNTS } from "@/lib/config";
 
 const giftIcons = [Baby, Gift, HeartHandshake];
 
@@ -34,10 +34,20 @@ export default function TreasuryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            For loved ones asking how to celebrate with the family, here are three thoughtful ways
-            to sow into this new chapter.
+            For loved ones asking how to celebrate with the family.
           </motion.p>
         </div>
+      </section>
+
+      <section className="treasury-message section-band">
+        <ScrollReveal>
+          <div className="gratitude-card">
+            <HeartHandshake size={24} />
+            <p>{TREASURY_MESSAGE.gratitude}</p>
+            <p>{TREASURY_MESSAGE.kindness}</p>
+            <p>{TREASURY_MESSAGE.invite}</p>
+          </div>
+        </ScrollReveal>
       </section>
 
       <section className="treasury-section section-band">
@@ -72,18 +82,67 @@ export default function TreasuryPage() {
         </div>
       </section>
 
+      <section className="bank-section section-band">
+        <ScrollReveal>
+          <h2 className="section-title-centered">Bank Account Details</h2>
+        </ScrollReveal>
+
+        <div className="bank-grid">
+          {BANK_ACCOUNTS.map((acc, i) => (
+            <ScrollReveal key={acc.currency} delay={i * 0.15}>
+              <motion.div
+                className="bank-card"
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", damping: 20 }}
+              >
+                <div className="bank-header">
+                  <Landmark size={20} />
+                  <span className="bank-currency">{acc.currency}</span>
+                </div>
+                <div className="bank-details">
+                  <div className="bank-row">
+                    <span className="bank-label">Account Name</span>
+                    <span className="bank-value">{acc.name}</span>
+                  </div>
+                  <div className="bank-row">
+                    <span className="bank-label">Bank</span>
+                    <span className="bank-value">{acc.bank}</span>
+                  </div>
+                  <div className="bank-row">
+                    <span className="bank-label">Account Number</span>
+                    <span className="bank-value mono">{acc.accountNumber}</span>
+                  </div>
+                  {"sortCode" in acc && (
+                    <div className="bank-row">
+                      <span className="bank-label">Sort Code</span>
+                      <span className="bank-value mono">{acc.sortCode}</span>
+                    </div>
+                  )}
+                  {"iban" in acc && (
+                    <div className="bank-row">
+                      <span className="bank-label">IBAN</span>
+                      <span className="bank-value mono">{acc.iban}</span>
+                    </div>
+                  )}
+                  {"bic" in acc && (
+                    <div className="bank-row">
+                      <span className="bank-label">BIC</span>
+                      <span className="bank-value mono">{acc.bic}</span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
       <section className="treasury-message section-band">
         <ScrollReveal>
-          <div className="message-card">
-            <HeartHandshake size={28} />
-            <h2>Leave a Blessing</h2>
-            <p>
-              Want to send a personal message to the family? We&apos;d love to hear from you.
-            </p>
-            <a href={`mailto:${CONTACT.email}`} className="gold-button">
-              <Mail size={18} />
-              <span>Send a Message</span>
-            </a>
+          <div className="gratitude-card closing">
+            <p>{TREASURY_MESSAGE.closing}</p>
+            <p>{TREASURY_MESSAGE.blessing}</p>
+            <p className="signature">{TREASURY_MESSAGE.signature}</p>
           </div>
         </ScrollReveal>
       </section>

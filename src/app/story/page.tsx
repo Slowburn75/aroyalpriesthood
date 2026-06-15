@@ -25,7 +25,7 @@ export default function StoryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            The Power Couple Story
+            The Power <span className="strike">Couple</span> Family Story
           </motion.h1>
           <motion.p
             className="page-hero-sub"
