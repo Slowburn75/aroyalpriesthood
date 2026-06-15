@@ -95,11 +95,6 @@ export const BANK_ACCOUNTS = [
 
 export const GIFTS = [
   {
-    title: "Little Prince Essentials",
-    description: "Thoughtful diapers, care items, blankets, and everyday treasures for his first royal season.",
-    action: "Send Essentials"
-  },
-  {
     title: "Royal Wardrobe",
     description: "Soft outfits, heirloom pieces, and elegant babywear for pictures, dedication, and cozy days.",
     action: "Bless His Closet"

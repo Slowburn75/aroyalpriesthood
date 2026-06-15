@@ -4,10 +4,11 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SCRIPTURE } from "@/lib/config";
-import { Heart, Send, Sparkles, Star } from "lucide-react";
+import { Heart, Send, Sparkles, Star, User } from "lucide-react";
 
 interface Suggestion {
   name: string;
+  suggester: string;
   timestamp: number;
 }
 
@@ -23,8 +24,12 @@ function useSuggestions() {
     } catch {}
   }, []);
 
-  const addSuggestion = useCallback((name: string) => {
-    const entry = { name: name.trim(), timestamp: Date.now() };
+  const addSuggestion = useCallback((name: string, suggester: string) => {
+    const entry: Suggestion = {
+      name: name.trim(),
+      suggester: suggester.trim() || "Anonymous",
+      timestamp: Date.now()
+    };
     setSuggestions(prev => {
       const next = [entry, ...prev];
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
@@ -37,14 +42,15 @@ function useSuggestions() {
 
 export default function NamePage() {
   const { suggestions, addSuggestion } = useSuggestions();
-  const [input, setInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+  const [whoInput, setWhoInput] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const val = input.trim();
-    if (!val) return;
-    addSuggestion(val);
-    setInput("");
+    if (!nameInput.trim()) return;
+    addSuggestion(nameInput, whoInput);
+    setNameInput("");
+    setWhoInput("");
   };
 
   return (
@@ -89,21 +95,38 @@ export default function NamePage() {
             </p>
 
             <form className="suggest-form" onSubmit={handleSubmit}>
-              <input
-                className="suggest-input"
-                type="text"
-                placeholder="Enter a name..."
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                maxLength={60}
-                aria-label="Name suggestion"
-              />
+              <div className="suggest-fields">
+                <div className="suggest-field-row">
+                  <User size={16} />
+                  <input
+                    className="suggest-input"
+                    type="text"
+                    placeholder="Your name (optional)"
+                    value={whoInput}
+                    onChange={e => setWhoInput(e.target.value)}
+                    maxLength={40}
+                    aria-label="Your name"
+                  />
+                </div>
+                <div className="suggest-field-row">
+                  <Sparkles size={16} />
+                  <input
+                    className="suggest-input"
+                    type="text"
+                    placeholder="Enter a name..."
+                    value={nameInput}
+                    onChange={e => setNameInput(e.target.value)}
+                    maxLength={60}
+                    aria-label="Name suggestion"
+                  />
+                </div>
+              </div>
               <motion.button
                 className="gold-button suggest-btn"
                 type="submit"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.96 }}
-                disabled={!input.trim()}
+                disabled={!nameInput.trim()}
               >
                 <Send size={16} />
                 <span>Suggest</span>
@@ -135,8 +158,15 @@ export default function NamePage() {
                     delay: i === 0 ? 0 : Math.min(i * 0.03, 0.3)
                   }}
                 >
-                  <Sparkles size={14} />
-                  <span className="suggestion-name">{s.name}</span>
+                  <span className="suggestion-text">
+                    {s.suggester !== "Anonymous" ? (
+                      <>
+                        <span className="suggestion-suggester">{s.suggester}</span>
+                        {" suggested "}
+                      </>
+                    ) : null}
+                    <span className="suggestion-name">{s.name}</span>
+                  </span>
                 </motion.div>
               ))}
             </motion.div>

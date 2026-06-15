@@ -1373,38 +1373,58 @@ footer {
 
 .suggest-form {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 24px;
   max-width: 480px;
   margin-inline: auto;
 }
 
-.suggest-input {
-  flex: 1;
-  min-height: 52px;
+.suggest-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.suggest-field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 0 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(253, 251, 247, 0.06);
+  transition: border-color 200ms ease;
+}
+
+.suggest-field-row:focus-within {
+  border-color: var(--gold);
+}
+
+.suggest-field-row svg {
+  flex-shrink: 0;
+  color: rgba(253, 251, 247, 0.35);
+  width: 16px;
+  height: 16px;
+}
+
+.suggest-input {
+  flex: 1;
+  min-height: 48px;
+  background: none;
+  border: none;
   color: var(--cream);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   outline: none;
-  transition: border-color 200ms ease;
 }
 
 .suggest-input::placeholder {
   color: rgba(253, 251, 247, 0.35);
 }
 
-.suggest-input:focus {
-  border-color: var(--gold);
-}
-
 .suggest-btn {
-  flex-shrink: 0;
   padding: 0 22px;
-  min-height: 52px;
+  min-height: 48px;
 }
 
 .suggest-btn:disabled {
@@ -1429,19 +1449,24 @@ footer {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.04));
-  color: var(--light-gold);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.suggestion-card svg {
-  flex-shrink: 0;
-  color: var(--gold);
+.suggestion-text {
+  color: rgba(253, 251, 247, 0.65);
+}
+
+.suggestion-suggester {
+  color: var(--light-gold);
+  font-weight: 600;
 }
 
 .suggestion-name {
   font-family: var(--font-cormorant), var(--font-playfair), Georgia, serif;
   font-style: italic;
+  color: var(--gold);
+  font-size: 1rem;
 }
 
 .scripture-card {
@@ -1513,7 +1538,8 @@ footer {
   }
 
   .gift-grid-page {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
   }
 
   .meaning-grid {
