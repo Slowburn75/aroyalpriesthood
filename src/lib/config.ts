@@ -25,7 +25,7 @@ export const NAV_ITEMS = [
   { label: "HOME", href: "/" },
   { label: "OUR STORY", href: "/story" },
   { label: "HIS NAME", href: "/name" },
-  { label: "GALLERY", href: "/gallery" },
+  { label: "MOMENTS", href: "/gallery" },
   { label: "TREASURY", href: "/treasury" }
 ] as const;
 
@@ -44,21 +44,68 @@ export const MILESTONES = [
     subtitle: "A Prophetic Phone Call",
     text: "Moving past the community zone, a bold phone call declared a prophetic future. She countered with a prayer: \"Let the will of God for this friendship be manifest.\" God answered.",
     detail:
-      "Stepping out in faith, he picked up the phone and spoke what his heart knew. Her response was not romance but reverence — a prayer that put their story in God's hands. And He moved."
+      "Stepping out in faith, he picked up the phone and spoke what his heart knew. Her response was not romance but reverence, a prayer that put their story in God's hands. And He moved."
   },
   {
     number: "03",
     title: "Sovereign Alignment",
-    subtitle: "September 17 — Same Birthday",
+    subtitle: "September 17, Same Birthday",
     text: "Born on the exact same day. A beautiful, supernatural signature of God's perfect timing and design for their union.",
     detail:
-      "What are the odds? Two hearts, born on the same day, brought together by the same God. A detail too precise to be coincidence — it was a stamp of divine approval."
+      "What are the odds? Two hearts, born on the same day, brought together by the same God. A detail too precise to be coincidence. It was a stamp of divine approval."
   }
 ] as const;
 
 export const SCRIPTURE = {
-  hero: "1 Peter 2:9 — 'But you are a chosen generation, a royal priesthood, a holy nation, His own special people...'",
-  name: "Psalm 127:3 — 'Behold, children are a heritage from the Lord, the fruit of the womb is a reward.'"
+  hero: "1 Peter 2:9: \"But you are a chosen generation, a royal priesthood, a holy nation, His own special people...\"",
+  name: "Psalm 127:3: \"Behold, children are a heritage from the Lord, the fruit of the womb is a reward.\""
+} as const;
+
+export const TESTIMONY = {
+  eyebrow: "Our Testimony",
+  title: "God\u2019s Timing",
+  deck: "A journey of faith, service, and sovereign timing.",
+  opening: [
+    "On May 5th, 2022, we said \u201cI do\u201d and began our journey as husband and wife. The Power Couple.",
+    "From the very beginning, we made a conscious decision to enjoy our marriage, build our friendship, settle into a new country, and put certain structures in place before starting a family. We wanted to grow together, learn each other deeply, and enjoy the beautiful gift of marriage before embracing parenthood.",
+    "What we did not know was that while we were making plans, God was directing our steps."
+  ],
+  service: [
+    "We imagined years filled with holidays, quiet moments, and endless adventures together. Instead, much of our early years of marriage became a journey of purpose and service. One project led to another. What started as simple meditation eventually evolved into THE ARK APP, and alongside many other assignments, our lives became deeply invested in serving God\u2019s people.",
+    "Every time it seemed like it was finally time to slow down and focus on ourselves, another opportunity to serve appeared. Yet through it all, we were having some of the most beautiful years of our lives, growing together, loving each other, strengthening our friendship, and witnessing God\u2019s faithfulness every step of the way."
+  ],
+  encounter: [
+    "One moment we will never forget was meeting our father, Apostle Joshua Selman, in Manchester Sound of Revival in 2023.",
+    "As he lovingly spoke with us, he asked how long we had been married. We told him we were approaching two years. Ready to pray for us for children, he began to release blessings over us. Then my wife, with a smile, gently said, \u201cDaddy, we\u2019re not ready yet.\u201d",
+    "In his usual fatherly way, he smiled, embraced us, and said:"
+  ],
+  pullQuote: "Whenever you\u2019re ready, it will not take time.",
+  pullQuoteAttribution: "Apostle Joshua Selman, Manchester 2023",
+  shift: [
+    "Those words stayed with us.",
+    "Fast forward to 2025. Around our birthdays, we felt a peace in our hearts that the season had changed. We felt ready. Ready to embrace the next chapter God had prepared for us.",
+    "And just as our father had spoken years earlier, it truly did not take time. Shortly afterward, we discovered we were expecting."
+  ],
+  reflection: [
+    "For us, this testimony is precious because we know many families make plans and then face long seasons of waiting. We know that no amount of human planning can guarantee outcomes. As Scripture reminds us, it is not of him that willeth, nor of him that runneth, but of God that showeth mercy.",
+    "And mercy is exactly what God showed us.",
+    "This testimony is not about our planning. It is not about our wisdom. It is not even about our timing. It is about God\u2019s timing.",
+    "Perhaps that is why my name is God\u2019sTime. Looking back now, we can clearly see that every season unfolded exactly as Heaven intended."
+  ],
+  gratitude: [
+    "Today, our hearts are filled with gratitude. We are grateful for the years of friendship. Grateful for the years of service. Grateful for the lessons, the growth, the assignments, and the journey.",
+    "And now, we are grateful for this precious gift, a beautiful bundle of joy entrusted to us by God."
+  ],
+  encouragement: [
+    "To everyone trusting God for one promise or another, may this encourage you: when God writes your story, nothing is late. Nothing is delayed. Nothing is forgotten.",
+    "In His time, He makes everything beautiful. The God who orders seasons has once again proven Himself faithful.",
+    "To Him alone be all the glory."
+  ],
+  scripture: {
+    reference: "Romans 9:16",
+    text: "So then it is not of him that willeth, nor of him that runneth, but of God that sheweth mercy."
+  },
+  signature: "Ronke and Etim\nThe Power Family"
 } as const;
 
 export const TREASURY_MESSAGE = {
@@ -104,6 +151,13 @@ export const GIFTS = [
     description: "A love offering toward his care, future, and the beautiful new rhythms of family life.",
     action: "Give a Seed"
   }
+] as const;
+
+export const EXPLORE_SECTIONS = [
+  { label: "Our Story", href: "/story", description: "The journey that brought us here" },
+  { label: "His Name", href: "/name", description: "A name being prayerfully chosen" },
+  { label: "Moments", href: "/gallery", description: "Sacred moments captured in time" },
+  { label: "Treasury", href: "/treasury", description: "Bless this family" }
 ] as const;
 
 export interface GalleryItem {

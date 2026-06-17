@@ -47,6 +47,8 @@ export function Lightbox({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
+        onContextMenu={e => e.preventDefault()}
+        onDragStart={e => e.preventDefault()}
         role="dialog"
         aria-modal="true"
         aria-label="Image viewer"
@@ -65,10 +67,12 @@ export function Lightbox({
               alt={currentItem.caption}
               fill
               sizes="(max-width: 900px) 100vw, 900px"
-              className={`lightbox-img ${loaded ? "loaded" : ""}`}
+              className={`lightbox-img img-protected ${loaded ? "loaded" : ""}`}
               onLoad={() => setLoaded(true)}
               priority
+              draggable={false}
             />
+            <div className="img-shield" />
             {!loaded && (
               <div className="lightbox-placeholder">
                 <span className="lightbox-caption">{currentItem.caption}</span>

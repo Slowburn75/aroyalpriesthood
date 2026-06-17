@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Inter, Montserrat, Playfair_Display } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, DM_Serif_Display, EB_Garamond, Outfit } from "next/font/google";
 import { SITE } from "@/lib/config";
 import { ClientShell } from "@/components/ClientShell";
 import "./globals.css";
 
 const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel" });
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-cormorant" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400", variable: "--font-dm-serif" });
+const instrumentSerif = EB_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], variable: "--font-instrument" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${cinzel.variable} ${montserrat.variable} ${cormorant.variable} ${playfair.variable} ${inter.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${cinzel.variable} ${outfit.variable} ${cormorant.variable} ${dmSerif.variable} ${instrumentSerif.variable}`}>
       <body>
         <ClientShell>{children}</ClientShell>
       </body>

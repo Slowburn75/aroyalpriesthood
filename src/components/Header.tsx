@@ -1,22 +1,29 @@
 "use client";
 
-import { Crown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NAV_ITEMS } from "@/lib/config";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <Link className="brand" href="/" onClick={closeMenu} aria-label="AROYALPRIESTHOOD home">
-          <Crown aria-hidden="true" />
+          <span className="brand-dot" />
           <span>AROYALPRIESTHOOD</span>
         </Link>
 
@@ -25,7 +32,7 @@ export function Header() {
             <Link
               href={item.href}
               key={item.href}
-              className={pathname === item.href ? "nav-active" : ""}
+              className={`nav-link ${pathname === item.href ? "is-active" : ""}`}
             >
               {item.label}
             </Link>
@@ -33,25 +40,27 @@ export function Header() {
         </nav>
 
         <button
-          className="menu-toggle"
+          className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(open => !open)}
         >
-          {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          <span className="menu-toggle-line" />
+          <span className="menu-toggle-line" />
         </button>
       </header>
 
       <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
-        <nav aria-label="Mobile navigation">
-          {NAV_ITEMS.map(item => (
+        <nav className="mobile-nav" aria-label="Mobile navigation">
+          {NAV_ITEMS.map((item, i) => (
             <Link
               href={item.href}
               key={item.href}
               onClick={closeMenu}
-              className={pathname === item.href ? "nav-active" : ""}
+              className={`mobile-nav-link ${pathname === item.href ? "is-active" : ""}`}
             >
-              {item.label}
+              <span className="mobile-nav-number">{String(i + 1).padStart(2, "0")}</span>
+              <span>{item.label}</span>
             </Link>
           ))}
         </nav>

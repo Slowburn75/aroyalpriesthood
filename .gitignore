@@ -10,7 +10,6 @@ work/
 *.log
 
 .DS_Store
-bun.lock
 tsconfig.tsbuildinfo
 
 # Playwright

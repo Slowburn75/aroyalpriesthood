@@ -1,73 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Gift, HeartHandshake, Mail, Landmark } from "lucide-react";
+import { Landmark } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { CONTACT, GIFTS, TREASURY_MESSAGE, BANK_ACCOUNTS } from "@/lib/config";
-
-const giftIcons = [Gift, HeartHandshake];
+import { TREASURY_MESSAGE, BANK_ACCOUNTS } from "@/lib/config";
 
 export default function TreasuryPage() {
     return (
         <>
             <section className="page-hero">
-                <div className="page-hero-bg" />
+                <div className="page-hero-overlay" />
                 <div className="page-hero-content">
-                    <motion.p
-                        className="eyebrow"
-                        initial={{ opacity: 0, y: 20 }}
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
                     >
-                        The Royal Treasury
-                    </motion.p>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                    >
-                        Gifts
-                    </motion.h1>
-                    <motion.p
-                        className="page-hero-sub"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6, duration: 0.6 }}
-                    >
-                        For loved ones asking how to celebrate with the family.
-                    </motion.p>
+                        <div className="page-hero-eyebrow">
+                            <span className="chapter-mark">The Royal Treasury</span>
+                        </div>
+                        <h1>Gifts</h1>
+                        <p className="page-hero-sub">
+                            For loved ones asking how to celebrate with the family.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
-            <section className="treasury-message section-band">
+            <section className="section-band section-dark">
                 <ScrollReveal>
-                    <div className="gratitude-card">
-                        <HeartHandshake size={24} />
-                        <p>{TREASURY_MESSAGE.gratitude}</p>
-                        <p>{TREASURY_MESSAGE.kindness}</p>
-                        <p>{TREASURY_MESSAGE.invite}</p>
+                    <div className="treasury-letter">
+                        <span className="chapter-mark">A Word of Gratitude</span>
+                        <div className="treasury-letter-body">
+                            <p>{TREASURY_MESSAGE.gratitude}</p>
+                            <p>{TREASURY_MESSAGE.kindness}</p>
+                            <p>{TREASURY_MESSAGE.invite}</p>
+                        </div>
                     </div>
                 </ScrollReveal>
             </section>
 
             <section className="bank-section section-band">
                 <ScrollReveal>
-                    <h2 className="section-title-centered">Bank Account Details</h2>
+                    <div className="bank-header">
+                        <span className="chapter-mark">Account Details</span>
+                        <h2>Bank Information</h2>
+                    </div>
                 </ScrollReveal>
 
-                <div className="bank-grid">
+                <div className="bank-list">
                     {BANK_ACCOUNTS.map((acc, i) => (
-                        <ScrollReveal key={acc.currency} delay={i * 0.15}>
-                            <motion.div
-                                className="bank-card"
-                                whileHover={{ y: -4 }}
-                                transition={{ type: "spring", damping: 20 }}
-                            >
-                                <div className="bank-header">
-                                    <Landmark size={20} />
-                                    <span className="bank-currency">{acc.currency}</span>
+                        <ScrollReveal key={acc.currency} delay={i * 0.1}>
+                            <div className="bank-block">
+                                <div className="bank-block-currency">
+                                    <Landmark size={16} />
+                                    <span>{acc.currency}</span>
                                 </div>
-                                <div className="bank-details">
+                                <div className="bank-rows">
                                     <div className="bank-row">
                                         <span className="bank-label">Account Name</span>
                                         <span className="bank-value">{acc.name}</span>
@@ -99,18 +88,19 @@ export default function TreasuryPage() {
                                         </div>
                                     )}
                                 </div>
-                            </motion.div>
+                            </div>
                         </ScrollReveal>
                     ))}
                 </div>
             </section>
 
-            <section className="treasury-message section-band">
+            <section className="section-band section-dark">
                 <ScrollReveal>
-                    <div className="gratitude-card closing">
+                    <div className="treasury-closing">
+                        <span className="chapter-mark">With Gratitude</span>
                         <p>{TREASURY_MESSAGE.closing}</p>
                         <p>{TREASURY_MESSAGE.blessing}</p>
-                        <p className="signature">{TREASURY_MESSAGE.signature}</p>
+                        <p className="treasury-signature">{TREASURY_MESSAGE.signature}</p>
                     </div>
                 </ScrollReveal>
             </section>

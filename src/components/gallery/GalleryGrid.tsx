@@ -10,7 +10,11 @@ export function GalleryGrid({
   onImageClick: (id: number) => void;
 }) {
   return (
-    <div className="gallery-grid-bento">
+    <div
+      className="gallery-grid-bento"
+      onContextMenu={e => e.preventDefault()}
+      onDragStart={e => e.preventDefault()}
+    >
       {GALLERY_ITEMS.map((item, i) => {
         const cs = item.colSpan || 1;
         const rs = item.rowSpan || 1;
@@ -33,7 +37,8 @@ export function GalleryGrid({
               alt={item.caption}
               fill
               sizes="(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="gallery-card-img"
+              className="gallery-card-img img-protected"
+              draggable={false}
             />
             <div className="gallery-card-overlay">
               <span className="gallery-card-caption">{item.caption}</span>
