@@ -674,7 +674,6 @@ img {
 
 .article-header {
   text-align: left;
-  max-width: var(--read-w);
   padding-bottom: 48px;
   border-bottom: 1px solid var(--line-soft);
 }
@@ -698,7 +697,6 @@ img {
 
 .article-body {
   padding-top: 48px;
-  max-width: var(--read-w);
 }
 
 .article-body p {
@@ -816,7 +814,6 @@ img {
 }
 
 .how-we-met-header {
-  max-width: var(--read-w);
   margin: 0 auto 60px;
   padding: 0 28px;
 }
@@ -829,7 +826,6 @@ img {
 }
 
 .milestones {
-  max-width: var(--read-w);
   margin: 0 auto;
   padding: 0 28px;
 }
@@ -1072,7 +1068,6 @@ img {
   font-size: 1rem;
   line-height: 1.85;
   color: var(--cream);
-  max-width: var(--read-w);
 }
 
 .treasury-letter-body p:first-of-type {
@@ -1116,7 +1111,6 @@ img {
 .bank-block {
   padding: 36px 0;
   border-top: 1px solid var(--line-soft);
-  max-width: var(--read-w);
 }
 
 .bank-block:last-child {
@@ -1188,7 +1182,6 @@ img {
   font-size: 1rem;
   line-height: 1.85;
   color: var(--cream);
-  max-width: var(--read-w);
 }
 
 .treasury-closing .treasury-signature {
@@ -1204,6 +1197,7 @@ img {
 .gallery-grid-bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 220px;
   gap: 8px;
   max-width: var(--wide-w);
   margin: 60px auto 0;
@@ -1216,12 +1210,12 @@ img {
   cursor: pointer;
   background: var(--navy-3);
   border-radius: 2px;
-  aspect-ratio: 4 / 3;
 }
 
 @media (min-width: 600px) {
   .gallery-grid-bento {
     grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 260px;
     gap: 12px;
   }
 
@@ -1232,22 +1226,11 @@ img {
   .gallery-card-bento[data-rows="2"] {
     grid-row: span 2;
   }
-
-  .gallery-card-bento[data-cols="2"]:not([data-rows="2"]) {
-    aspect-ratio: 2 / 1;
-  }
-
-  .gallery-card-bento[data-rows="2"]:not([data-cols="2"]) {
-    aspect-ratio: 1 / 2;
-  }
-
-  .gallery-card-bento[data-cols="2"][data-rows="2"] {
-    aspect-ratio: 1;
-  }
 }
 
 .gallery-card-img {
   object-fit: cover;
+  object-position: center;
   transition: transform 600ms ease;
 }
 
@@ -1317,6 +1300,7 @@ img {
 
 .slideshow-img {
   object-fit: cover;
+  object-position: center;
   opacity: 0;
   transition: opacity 500ms ease;
 }
@@ -1490,7 +1474,8 @@ img {
 }
 
 .lightbox-img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   opacity: 0;
   transition: opacity 400ms ease;
 }
